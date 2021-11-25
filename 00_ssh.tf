@@ -1,5 +1,4 @@
 resource "aws_key_pair" "ssw-key" {
   key_name = "ssw1-key"
-  public_key = file("../../.ssh/sswkey.pub")
-  #public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCrrF4FDZS0UIv1GN9svenaHrKdi1ufV8Xh9yw0/ENJ3AZl6tNNhAXcFep6oB3aQs6TokF6UeZDkeJt93xJqYNTJdHmOK5f+ZvQTFoEFu8m1m4uTPT6VesvDGyrlxLDz9s6dJhU3UqE2S2JiwGreYY9v5IxIZO0aHYhXJ+v2LBoCXZtQGkKmTpolL1mvYpfXM6iLAwQeb6teRAI6ytSpt643ELKfap47iFYPuX0WC8mxyckfb+yeNAAn0sIX5jnq/USLO0AhabtGUtuZTZMFFIwMsbkepqmx0RBEV66nehXOZqFyjRtRZxm26FiiIMlckxiahz0wpfdUIYR4Cc05OUO0FN9VY7aoyMGSOkOc2UY1jTNTG1ORPpmr+gen+JMhik9YzoJjGYsoLfV9dAUWsbmv/veQ3vXs5FINFcBuJ/VdhiEUj+H0EA8rPU2V1XxfizkwU3BLQh7ngOCsLYWAzOjJNOZQU+Dc69Vvribp7uBJhDzPIfscjPhBA65jJlMJ8c="
+  public_key = file("../../.ssh/sswkey.pub")  
 }
