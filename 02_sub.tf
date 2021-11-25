@@ -47,7 +47,7 @@ resource "aws_subnet" "ssw_pridba" {
 resource "aws_subnet" "ssw_pridbc" {
   vpc_id            = aws_vpc.ssw_vpc.id
   cidr_block        = "10.0.5.0/24"
-  availability_zone = "ap-norheast-2c"
+  availability_zone = "ap-northeast-2c"
   tags = {
     "Name" = "ssw-pridbc"
   }
