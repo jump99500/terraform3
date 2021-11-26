@@ -1,0 +1,40 @@
+data "aws_ami" "amzn" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  owners = ["amazon"]
+} #aws ami 가져오는 명령어
+
+resource "aws_instance" "ssw_web" {
+  ami                    = data.aws_ami.amzn.id
+  instance_type          = "t2.micro"
+  key_name               = "ssw1-key"
+  vpc_security_group_ids = [aws_security_group.ssw_sg.id]
+  availability_zone      = "ap-northeast-2a"
+  private_ip = "10.0.0.11" #하도 오류가 많이 나서 일단 주석처리 -> 근데 본인 마음대로 하면 됨
+  subnet_id = aws_subnet.ssw_puba.id
+
+  tags = {
+    "Name" = "ssw-web"
+  }
+}
+
+resource "aws_eip" "ssw_web_ip" {
+    vpc = true
+    instance = aws_instance.ssw_web.id
+    associate_with_private_ip = "10.0.0.11" #위의 Private ip가 주석처리 되었으므로 얘도 주석처리
+    depends_on = [aws_internet_gateway.ssw_ig]
+}
+
+output "public_ip" {
+    value = aws_instance.ssw_web.public_ip
+}
